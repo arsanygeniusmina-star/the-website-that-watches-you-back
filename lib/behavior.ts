@@ -49,13 +49,14 @@ export function scoreBehavior(s: Signals): BehaviorVector {
 }
 
 export function archetype(v: BehaviorVector) {
-  const candidates = [
+  const candidates: Array<[string, number]> = [
     ["THE EXPLORER", v.exploration + v.curiosity],
     ["THE OBSERVER", v.focus + v.patience],
     ["THE SEEKER", v.persistence + v.exploration],
     ["THE LOOP", v.repetition * 1.8],
     ["THE IMPULSE", v.interactionSpeed + (100 - v.hesitation)],
     ["THE DEEP DIVE", v.focus + v.patience + v.persistence * 0.5],
-  ] as const;
+  ];
+
   return candidates.sort((a, b) => b[1] - a[1])[0][0];
 }
